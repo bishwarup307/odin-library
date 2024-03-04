@@ -1,0 +1,81 @@
+.title-face {
+    font-family: "Yeseva One", serif;
+}
+
+.grid {
+    display: grid;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.gap1 {
+    gap: 1rem;
+}
+
+.gap2 {
+    gap: 2rem;
+}
+
+.gap05 {
+    gap: 0.5rem;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.fw500 {
+    font-weight: 500;
+}
+
+.fw600 {
+    font-weight: 600;
+}
+
+.btn {
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(
+        90deg,
+        var(--clr-primary) 0%,
+        var(--clr-secondary) 100%
+    );
+    color: white;
+    transition: all 400ms;
+
+    &:hover {
+        border-radius: 50vh;
+    }
+}
+
+.btn-xl {
+    font-size: 1.7rem;
+    padding: 0.7em 1.2em;
+}
