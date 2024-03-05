@@ -9,10 +9,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Yeseva+One&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Yeseva+One&display=swap"
         rel="stylesheet">
 
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/utilities.css">
     <link rel="stylesheet" href="./css/index.css">
 
@@ -41,13 +43,22 @@
                 <h2>Add a book to the library</h2>
                 <form action="" class="grid">
                     <label for="book_title">Title</label>
-                    <input type="text" name="title" id="book_title">
+                    <div class="flex relative">
+                        <input type="text" name="title" id="book_title" placeholder="Enter the title of your book">
+                        <div class="validate"></div>
+                    </div>
 
                     <label for="book_author">Author</label>
-                    <input type="text" name="author" id="book_author">
+                    <div class="flex relative">
+                        <input type="text" name="author" id="book_author" placeholder="Enter the name of the author">
+                        <div class="validate"></div>
+                    </div>
 
                     <label for="book_pages">Number of pages</label>
-                    <input type="tel" name="pages" id="book_pages">
+                    <div class="flex relative">
+                        <input type="tel" name="pages" id="book_pages">
+                        <div class="validate"></div>
+                    </div>
 
                     <label for="book_genre">Genre</label>
                     <select name="genre" id="book_genre"></select>
@@ -60,7 +71,7 @@
 
                     <div></div>
                     <div class="buttons">
-                        <button class="btn btn-primary btn-regular">Add to library</button>
+                        <button class="btn btn-primary btn-regular" id="btn-add-to-library">Add to library</button>
                         <button class="btn btn-secondary btn-regular">Close</button>
                     </div>
                 </form>

@@ -1,6 +1,17 @@
 const addBookBtn = document.querySelector("#add-new-book");
 const modal = document.querySelector("#modal");
 const bookGenre = document.querySelector("#book_genre");
+const addToLibraryBtn = document.querySelector("#btn-add-to-library");
+
+const bookTitle = document.querySelector("#book_title");
+const bookAuthor = document.querySelector("#book_author");
+const bookNumPages = document.querySelector("#book_pages");
+const bookDescription = document.querySelector("#book_description");
+const bookCover = document.querySelector("#book_cover");
+
+const bookTitleValidation = document.querySelector("#book_title+.validate");
+const bookAuthorValidation = document.querySelector("#book_author+.validate");
+const bookNumPagesValidation = document.querySelector("#book_pages+.validate");
 
 const GENRES = [
     "Fantasy",
@@ -91,4 +102,31 @@ addBookBtn.addEventListener("click", () => {
     bookGenre.appendChild(options);
 
     modal.showModal();
+});
+
+const validateForm = function () {
+    if (!bookTitle.value) {
+        bookTitleValidation.textContent = "Please enter a book title";
+        bookTitle.focus();
+        return false;
+    } else bookTitleValidation.textContent = "";
+
+    if (!bookAuthor.value) {
+        bookAuthorValidation.textContent = "Please enter the book author(s)";
+        bookAuthor.focus();
+        return false;
+    } else bookAuthorValidation.textContent = "";
+
+    if (!bookNumPages.value || bookNumPages.value <= 0) {
+        bookNumPagesValidation.textContent = "Please enter a valid number";
+        bookNumPages.focus();
+        return false;
+    } else bookNumPagesValidation.textContent = "";
+
+    return true;
+};
+
+addToLibraryBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    validateForm();
 });

@@ -9,6 +9,7 @@
     --clr-gray-400: hsl(0, 0%, 60%);
     --clr-gray-600: hsl(0, 0%, 42%);
     --clr-gray-900: hsl(0, 0%, 25%);
+    --clr-error: hsl(350, 66%, 53%);
 }
 
 * {
@@ -16,7 +17,7 @@
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    font-family: "Raleway", serif;
+    font-family: "DM Sans", serif;
 }
 
 ul {
@@ -141,6 +142,7 @@ dialog {
         input[type="tel"],
         select,
         textarea {
+            flex: 1;
             border: 1px solid var(--clr-gray-200);
             border-radius: 0.25rem;
             padding: 0.25rem 0.7rem;
@@ -159,10 +161,35 @@ dialog {
             /* width: 300px; */
         }
 
+        input::placeholder {
+            color: var(--clr-gray-200);
+        }
+
+        label[for="book_title"]::after,
+        label[for="book_author"]::after,
+        label[for="book_pages"]::after,
+        label[for="book_genre"]::after {
+            position: absolute;
+            content: "\f621";
+            transform: translateX(5px);
+            font-family: "Font Awesome 5 Free";
+            display: inline-block;
+            font-weight: 900;
+            font-size: 0.5em;
+        }
+
         & .buttons {
             display: flex;
             gap: 1rem;
             justify-self: end;
+        }
+
+        & .validate {
+            position: absolute;
+            font-size: 0.7rem;
+            color: var(--clr-error);
+            /* font-weight: 500; */
+            bottom: -1rem;
         }
     }
 }
