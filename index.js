@@ -13,8 +13,11 @@ const bookTitleValidation = document.querySelector("#book_title+.validate");
 const bookAuthorValidation = document.querySelector("#book_author+.validate");
 const bookNumPagesValidation = document.querySelector("#book_pages+.validate");
 
+const bookList = JSON.parse(localStorage.getItem("library") || "[]");
+
 const GENRES = [
     "Fantasy",
+    "Fiction",
     "Science Fiction",
     "Dystopian",
     "Action & Adventure",
@@ -58,6 +61,7 @@ class Book {
         description,
         pages,
         genre,
+        cover,
         rating,
         favorite = false,
         isRead = false
@@ -67,6 +71,7 @@ class Book {
         this.description = description;
         this.pages = pages;
         this.genre = genre;
+        this.cover = cover;
         this.rating = rating;
         this.isRead = isRead;
         this.favorite = favorite;
@@ -93,7 +98,7 @@ class Book {
 addBookBtn.addEventListener("click", () => {
     const options = document.createDocumentFragment();
 
-    GENRES.forEach((genre) => {
+    GENRES.sort().forEach((genre) => {
         const option = document.createElement("option");
         option.value = genre.toLowerCase();
         option.textContent = genre;
@@ -129,4 +134,27 @@ const validateForm = function () {
 addToLibraryBtn.addEventListener("click", (event) => {
     event.preventDefault();
     validateForm();
+
+    let imageUrl;
+
+    if (bookCover.files && bookCover.files[0]) {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(bookCover.files[0]);
+        fileReader.addEventListener("load", () => {
+            imageUrl = fileReader.result;
+        });
+    }
+
+    const newBook = new Book(
+        bookTitle.value,
+        bookAuthor.value,
+        bookDescription.value,
+        bookNumPages.value,
+        bookGenre.value,
+        imageUrl
+    );
+
+    bookList.push(newBook);
+    localStorage.setItem("library", JSON.stringify(bookList));
+    modal.close();
 });
