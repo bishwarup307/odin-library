@@ -1,9 +1,14 @@
 :root {
-    --clr-primary: hsl(0, 89%, 51%);
+    /* --clr-primary: hsl(0, 89%, 51%); */
+    /* --clr-primary: hsl(200, 67%, 36%); */
+    --clr-primary: hsl(13, 25%, 60%);
+    --clr-primary-600: hsl(13, 25%, 40%);
     --clr-secondary: hsl(47, 81%, 47%);
     --clr-background: hsl(0, 5%, 96%);
-    --clr-gray-400: hsl(0, 5%, 60%);
-    --clr-gray-600: hsl(0, 5%, 40%);
+    --clr-gray-200: hsl(0, 0%, 80%);
+    --clr-gray-400: hsl(0, 0%, 60%);
+    --clr-gray-600: hsl(0, 0%, 42%);
+    --clr-gray-900: hsl(0, 0%, 25%);
 }
 
 * {
@@ -21,6 +26,12 @@ ul {
 button,
 a {
     cursor: pointer;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Yeseva One", serif;
 }
 
 .hero {
@@ -43,7 +54,7 @@ a {
     .search-input {
         font-size: 1.1rem;
         padding-inline: 1rem;
-        height: 4rem;
+        height: 3rem;
         background-color: var(--clr-background);
         border: none;
         border-radius: 10px;
@@ -53,7 +64,7 @@ a {
         &:focus {
             outline: none;
             background-color: #fff;
-            transform: scaleX(1.1);
+            transform: scale(1.1);
         }
 
         &:focus + .search-icon {
@@ -68,7 +79,7 @@ a {
     .search-icon {
         width: 2rem;
         right: 1rem;
-        top: 1rem;
+        top: 0.5rem;
         fill: var(--clr-gray-400);
         transition: transform 300ms;
     }
@@ -76,7 +87,9 @@ a {
 
 .content-wrapper {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    padding-inline: clamp(1rem, 1rem + 15vw, 16rem);
+    /* padding-inline: clamp(1rem, 1rem + 15vw, 16rem); */
+    max-width: 60rem;
+    margin: 0 auto;
     padding-block: 4rem;
 }
 
@@ -84,6 +97,74 @@ a {
     height: 300px;
     background-color: var(--clr-gray-600);
     border: 2px solid black;
+}
+
+dialog {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgb(255 255 255 / 0.9);
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    resize: both;
+    overflow: auto;
+
+    padding: 2rem 4rem;
+
+    &::backdrop {
+        background: rgb(0 0 0 / 0.5);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 1rem;
+        color: var(--clr-gray-900);
+    }
+
+    form {
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        row-gap: 1.5rem;
+        column-gap: 2rem;
+
+        label {
+            justify-self: end;
+            font-size: 0.9rem;
+            color: var(--clr-gray-900);
+        }
+
+        label[for="book_cover"] {
+            align-self: start;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        select,
+        textarea {
+            border: 1px solid var(--clr-gray-200);
+            border-radius: 0.25rem;
+            padding: 0.25rem 0.7rem;
+            color: var(--clr-gray-900);
+
+            &:focus {
+                outline: none;
+                box-shadow: 2px 2px 6px rgb(0 0 0 / 0.1);
+            }
+        }
+
+        input,
+        select {
+            height: 2rem;
+            max-width: 400px;
+            /* width: 300px; */
+        }
+
+        & .buttons {
+            display: flex;
+            gap: 1rem;
+            justify-self: end;
+        }
+    }
 }
 
 @media only screen and (min-width: 768px) {

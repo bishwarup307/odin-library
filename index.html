@@ -15,6 +15,8 @@
 
     <link rel="stylesheet" href="./css/utilities.css">
     <link rel="stylesheet" href="./css/index.css">
+
+    <script src="./index.js" defer></script>
     <title>Your Library</title>
 </head>
 
@@ -34,7 +36,35 @@
                         d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
                 </svg>
             </div>
-            <button class="btn btn-primary btn-xl fw600">Add your book</button>
+            <button class="btn btn-primary btn-xl fw600" id="add-new-book">Add your book</button>
+            <dialog id="modal">
+                <h2>Add a book to the library</h2>
+                <form action="" class="grid">
+                    <label for="book_title">Title</label>
+                    <input type="text" name="title" id="book_title">
+
+                    <label for="book_author">Author</label>
+                    <input type="text" name="author" id="book_author">
+
+                    <label for="book_pages">Number of pages</label>
+                    <input type="tel" name="pages" id="book_pages">
+
+                    <label for="book_genre">Genre</label>
+                    <select name="genre" id="book_genre"></select>
+
+                    <label for="book_description">Description</label>
+                    <textarea name="description" id="book_description" cols="30" rows="10"></textarea>
+
+                    <label for="book_cover">Upload book cover</label>
+                    <input type="file" name="cover" id="book_cover" accept="image/*">
+
+                    <div></div>
+                    <div class="buttons">
+                        <button class="btn btn-primary btn-regular">Add to library</button>
+                        <button class="btn btn-secondary btn-regular">Close</button>
+                    </div>
+                </form>
+            </dialog>
         </div>
 
         <div class="content-wrapper grid gap1">
