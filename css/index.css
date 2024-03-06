@@ -6,6 +6,7 @@
     --clr-secondary: hsl(47, 81%, 47%);
     --clr-background: hsl(0, 5%, 96%);
     --clr-gray-200: hsl(0, 0%, 80%);
+    --clr-gray-300: hsl(0, 0%, 70%);
     --clr-gray-400: hsl(0, 0%, 60%);
     --clr-gray-600: hsl(0, 0%, 42%);
     --clr-gray-900: hsl(0, 0%, 25%);
@@ -31,7 +32,8 @@ a {
 
 h1,
 h2,
-h3 {
+h3,
+.book-title {
     font-family: "Yeseva One", serif;
 }
 
@@ -92,12 +94,51 @@ h3 {
     max-width: 60rem;
     margin: 0 auto;
     padding-block: 4rem;
+    /* place-items: center; */
 }
 
 .box {
-    height: 300px;
-    background-color: var(--clr-gray-600);
-    border: 2px solid black;
+    min-height: 300px;
+    align-items: center;
+
+    img {
+        width: 200px;
+    }
+
+    & .book-cover::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 30%;
+        width: 100%;
+        background: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.98) 0%,
+            rgba(0, 0, 0, 0) 100%
+        );
+    }
+
+    & .action-icons {
+        width: 200px;
+        padding-inline: 1rem;
+        bottom: 0.5rem;
+        justify-content: space-between;
+    }
+
+    & .icon {
+        cursor: pointer;
+        width: 24px;
+        height: 24px;
+        fill: var(--clr-gray-300);
+
+        &:hover {
+            fill: white;
+        }
+    }
+
+    /* background-color: var(--clr-gray-600);
+    border: 2px solid black; */
 }
 
 dialog {
