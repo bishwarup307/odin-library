@@ -1,245 +1,300 @@
 :root {
-    /* --clr-primary: hsl(0, 89%, 51%); */
-    /* --clr-primary: hsl(200, 67%, 36%); */
-    --clr-primary: hsl(13, 25%, 60%);
-    --clr-primary-600: hsl(13, 25%, 40%);
-    --clr-secondary: hsl(47, 81%, 47%);
-    --clr-background: hsl(0, 5%, 96%);
-    --clr-gray-200: hsl(0, 0%, 80%);
-    --clr-gray-300: hsl(0, 0%, 70%);
-    --clr-gray-400: hsl(0, 0%, 60%);
-    --clr-gray-600: hsl(0, 0%, 42%);
-    --clr-gray-900: hsl(0, 0%, 25%);
-    --clr-error: hsl(350, 66%, 53%);
+  /* --clr-primary: hsl(0, 89%, 51%); */
+  /* --clr-primary: hsl(200, 67%, 36%); */
+  --clr-primary: hsl(13, 25%, 60%);
+  --clr-primary-600: hsl(13, 25%, 40%);
+  --clr-secondary: hsl(47, 81%, 47%);
+  --clr-background: hsl(0, 5%, 96%);
+  --clr-gray-200: hsl(0, 0%, 80%);
+  --clr-gray-300: hsl(0, 0%, 70%);
+  --clr-gray-400: hsl(0, 0%, 60%);
+  --clr-gray-600: hsl(0, 0%, 42%);
+  --clr-gray-900: hsl(0, 0%, 25%);
+  --clr-error: hsl(350, 66%, 53%);
+  --clr-error-300: hsl(350, 66%, 63%);
+  /* --clr-error: rgb(214, 56, 82); */
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    font-family: "DM Sans", serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "DM Sans", serif;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 button,
 a {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 h1,
 h2,
 h3,
 .book-title {
-    font-family: "Yeseva One", serif;
+  font-family: "Yeseva One", serif;
 }
 
 .hero {
-    /* padding-block: 2rem; */
-    min-height: 40vh;
-    background: url("../assets/images/hero.jpg");
-    padding-block: 2rem;
+  /* padding-block: 2rem; */
+  min-height: 40vh;
+  background: url("../assets/images/hero.jpg");
+  background-size: cover;
+  padding-block: 2rem;
 
-    .logo {
-        width: clamp(3rem, 1rem + 10vw, 9rem);
-        top: -2rem;
+  .logo {
+    width: clamp(3rem, 1rem + 10vw, 9rem);
+    top: -2rem;
+  }
+
+  .title-text {
+    white-space: nowrap;
+    font-size: clamp(2rem, 1rem + 5vw, 5rem);
+    color: #fff;
+  }
+
+  .search-input {
+    font-size: 1.1rem;
+    padding-inline: 1rem;
+    height: 3rem;
+    background-color: var(--clr-background);
+    border: none;
+    border-radius: 10px;
+    width: clamp(250px, 50vw, 800px);
+    transition: transform 300ms;
+
+    &:focus {
+      outline: none;
+      background-color: #fff;
+      transform: scale(1.1);
     }
 
-    .title-text {
-        white-space: nowrap;
-        font-size: clamp(2rem, 1rem + 5vw, 5rem);
-        color: #fff;
+    &:focus + .search-icon {
+      transform: scale(0);
     }
 
-    .search-input {
-        font-size: 1.1rem;
-        padding-inline: 1rem;
-        height: 3rem;
-        background-color: var(--clr-background);
-        border: none;
-        border-radius: 10px;
-        width: clamp(250px, 50vw, 800px);
-        transition: transform 300ms;
-
-        &:focus {
-            outline: none;
-            background-color: #fff;
-            transform: scale(1.1);
-        }
-
-        &:focus + .search-icon {
-            transform: scale(0);
-        }
-
-        &::placeholder {
-            font-size: 1rem;
-        }
+    &::placeholder {
+      font-size: 1rem;
     }
+  }
 
-    .search-icon {
-        width: 2rem;
-        right: 1rem;
-        top: 0.5rem;
-        fill: var(--clr-gray-400);
-        transition: transform 300ms;
-    }
+  .search-icon {
+    width: 2rem;
+    right: 1rem;
+    top: 0.5rem;
+    fill: var(--clr-gray-400);
+    transition: transform 300ms;
+  }
 }
 
 .content-wrapper {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    /* padding-inline: clamp(1rem, 1rem + 15vw, 16rem); */
-    max-width: 60rem;
-    margin: 0 auto;
-    padding-block: 4rem;
-    /* place-items: center; */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  column-gap: 1rem;
+  row-gap: 4rem;
+  /* padding-inline: clamp(1rem, 1rem + 15vw, 16rem); */
+  max-width: 60rem;
+  margin: 0 auto;
+  padding-block: 4rem;
+  /* place-items: center; */
 }
 
 .box {
-    min-height: 300px;
+  min-height: 300px;
+  align-items: center;
+
+  img {
+    width: 200px;
+  }
+
+  & .book-cover {
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 14px rgb(0 0 0 / 0.3);
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 20%;
+      width: 100%;
+      background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0) 100%
+      );
+    }
+  }
+
+  & .book-cover.completed::after {
+    position: absolute;
+    content: "READ";
+    color: white;
+    background-color: rgba(201, 10, 42, 0.8);
+    letter-spacing: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0 2rem;
+    top: 24px;
+    left: -30px;
+    transform: rotate(-45deg);
+    overflow: hidden;
+  }
+
+  & .action-icons {
+    width: 200px;
+    padding-inline: 1rem;
+    bottom: 0;
+    justify-content: space-between;
+  }
+
+  .action-icon {
+    padding: 0.5rem;
+  }
+
+  & .icon {
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    fill: #e9e9e9;
+    transition: transform 400ms;
+
+    &:hover {
+      transform: scale(1.3);
+      fill: white;
+    }
+  }
+
+  & .icon-favorite-checked {
+    fill: var(--clr-error);
+  }
+
+  & .book-info {
     align-items: center;
+    gap: 0.25rem;
+    color: var(--clr-gray-900);
 
-    img {
-        width: 200px;
+    & .book-title {
+      text-align: center;
+      font-size: 1.1rem;
     }
 
-    & .book-cover::before {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        height: 30%;
-        width: 100%;
-        background: linear-gradient(
-            0deg,
-            rgba(0, 0, 0, 0.98) 0%,
-            rgba(0, 0, 0, 0) 100%
-        );
+    & .other-info {
+      font-size: 0.8rem;
     }
 
-    & .action-icons {
-        width: 200px;
-        padding-inline: 1rem;
-        bottom: 0.5rem;
-        justify-content: space-between;
+    & .page-info::after {
+      content: "\2022";
+      padding-inline: 2px;
     }
+  }
 
-    & .icon {
-        cursor: pointer;
-        width: 24px;
-        height: 24px;
-        fill: var(--clr-gray-300);
-
-        &:hover {
-            fill: white;
-        }
-    }
-
-    /* background-color: var(--clr-gray-600);
+  /* background-color: var(--clr-gray-600);
     border: 2px solid black; */
 }
 
 dialog {
-    border: none;
-    border-radius: 0.5rem;
-    box-shadow: 0 0 10px rgb(255 255 255 / 0.9);
-    top: 40%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    resize: both;
-    overflow: auto;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgb(255 255 255 / 0.9);
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  resize: both;
+  overflow: auto;
 
-    padding: 2rem 4rem;
+  padding: 2rem 4rem;
 
-    &::backdrop {
-        background: rgb(0 0 0 / 0.5);
+  &::backdrop {
+    background: rgb(0 0 0 / 0.5);
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--clr-gray-900);
+  }
+
+  form {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    row-gap: 1.5rem;
+    column-gap: 2rem;
+
+    label {
+      justify-self: end;
+      font-size: 0.9rem;
+      color: var(--clr-gray-900);
     }
 
-    h2 {
-        text-align: center;
-        margin-bottom: 1rem;
-        color: var(--clr-gray-900);
+    label[for="book_cover"] {
+      align-self: start;
     }
 
-    form {
-        grid-template-columns: auto 1fr;
-        align-items: center;
-        row-gap: 1.5rem;
-        column-gap: 2rem;
+    input[type="text"],
+    input[type="tel"],
+    select,
+    textarea {
+      flex: 1;
+      border: 1px solid var(--clr-gray-200);
+      border-radius: 0.25rem;
+      padding: 0.25rem 0.7rem;
+      color: var(--clr-gray-900);
 
-        label {
-            justify-self: end;
-            font-size: 0.9rem;
-            color: var(--clr-gray-900);
-        }
-
-        label[for="book_cover"] {
-            align-self: start;
-        }
-
-        input[type="text"],
-        input[type="tel"],
-        select,
-        textarea {
-            flex: 1;
-            border: 1px solid var(--clr-gray-200);
-            border-radius: 0.25rem;
-            padding: 0.25rem 0.7rem;
-            color: var(--clr-gray-900);
-
-            &:focus {
-                outline: none;
-                box-shadow: 2px 2px 6px rgb(0 0 0 / 0.1);
-            }
-        }
-
-        input,
-        select {
-            height: 2rem;
-            max-width: 400px;
-            /* width: 300px; */
-        }
-
-        input::placeholder {
-            color: var(--clr-gray-200);
-        }
-
-        label[for="book_title"]::after,
-        label[for="book_author"]::after,
-        label[for="book_pages"]::after,
-        label[for="book_genre"]::after {
-            position: absolute;
-            content: "\f621";
-            transform: translateX(5px);
-            font-family: "Font Awesome 5 Free";
-            display: inline-block;
-            font-weight: 900;
-            font-size: 0.5em;
-        }
-
-        & .buttons {
-            display: flex;
-            gap: 1rem;
-            justify-self: end;
-        }
-
-        & .validate {
-            position: absolute;
-            font-size: 0.7rem;
-            color: var(--clr-error);
-            /* font-weight: 500; */
-            bottom: -1rem;
-        }
+      &:focus {
+        outline: none;
+        box-shadow: 2px 2px 6px rgb(0 0 0 / 0.1);
+      }
     }
+
+    input,
+    select {
+      height: 2rem;
+      max-width: 400px;
+      /* width: 300px; */
+    }
+
+    input::placeholder {
+      color: var(--clr-gray-200);
+    }
+
+    label[for="book_title"]::after,
+    label[for="book_author"]::after,
+    label[for="book_pages"]::after,
+    label[for="book_genre"]::after {
+      position: absolute;
+      content: "\f621";
+      transform: translateX(5px);
+      font-family: "Font Awesome 5 Free";
+      display: inline-block;
+      font-weight: 900;
+      font-size: 0.5em;
+    }
+
+    & .buttons {
+      display: flex;
+      gap: 1rem;
+      justify-self: end;
+    }
+
+    & .validate {
+      position: absolute;
+      font-size: 0.7rem;
+      color: var(--clr-error);
+      bottom: -1rem;
+    }
+  }
 }
 
 @media only screen and (min-width: 768px) {
-    .hero {
-        min-height: 60vh;
-    }
-    .hero__title {
-        flex-direction: row;
-    }
+  .hero {
+    min-height: 60vh;
+  }
+  .hero__title {
+    flex-direction: row;
+  }
 }

@@ -1,87 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Yeseva+One&display=swap"
-        rel="stylesheet">
+      rel="shortcut icon"
+      href="./assets/images/favicon.ico"
+      type="image/x-icon"
+    />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./css/utilities.css">
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Yeseva+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./css/utilities.css" />
+    <link rel="stylesheet" href="./css/index.css" />
 
     <script src="./index.js" defer></script>
     <title>Your Library</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <main>
-        <div class="hero flex-col align-center justify-center gap2">
-            <div class="flex-col justify-center align-center hero__title">
-                <img src="./assets/images/logo.svg" alt="logo" class="relative logo">
-                <p class="title-face title-text">Your Library</p>
-            </div>
-            <div class="search relative">
-                <input type="search" name="search-input" id="search-input" placeholder="Search your favourite book"
-                    class="search-input">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                    class="search-icon absolute"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                    <path
-                        d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
-                </svg>
-            </div>
-            <button class="btn btn-primary btn-xl fw600" id="add-new-book">Add your book</button>
-            <dialog id="modal">
-                <h2>Add a book to the library</h2>
-                <form action="" class="grid" id="new-book-form">
-                    <label for="book_title">Title</label>
-                    <div class="flex relative">
-                        <input type="text" name="title" id="book_title" placeholder="Enter the title of your book">
-                        <div class="validate"></div>
-                    </div>
-
-                    <label for="book_author">Author</label>
-                    <div class="flex relative">
-                        <input type="text" name="author" id="book_author" placeholder="Enter the name of the author">
-                        <div class="validate"></div>
-                    </div>
-
-                    <label for="book_pages">Number of pages</label>
-                    <div class="flex relative">
-                        <input type="tel" name="pages" id="book_pages">
-                        <div class="validate"></div>
-                    </div>
-
-                    <label for="book_genre">Genre</label>
-                    <select name="genre" id="book_genre"></select>
-
-                    <label for="book_description">Description</label>
-                    <textarea name="description" id="book_description" cols="30" rows="10"></textarea>
-
-                    <label for="book_cover">Upload book cover</label>
-                    <input type="file" name="cover" id="book_cover" accept="image/*">
-
-                    <div></div>
-                    <div class="buttons">
-                        <button class="btn btn-primary btn-regular" id="btn-add-to-library">Add to library</button>
-                        <button class="btn btn-secondary btn-regular">Close</button>
-                    </div>
-                </form>
-            </dialog>
+      <div class="hero flex-col align-center justify-center gap2">
+        <div class="flex-col justify-center align-center hero__title">
+          <img
+            src="./assets/images/logo.svg"
+            alt="logo"
+            class="relative logo"
+          />
+          <p class="title-face title-text">Your Library</p>
         </div>
-
-        <div class="content-wrapper grid gap1">
-
+        <div class="search relative">
+          <input
+            type="search"
+            name="search-input"
+            id="search-input"
+            placeholder="Search your favourite book"
+            class="search-input"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+            class="search-icon absolute"
+          >
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+            />
+          </svg>
         </div>
+        <button class="btn btn-primary btn-xl fw600" id="add-new-book">
+          Add your book
+        </button>
+        <dialog id="modal">
+          <h2>Add a book to the library</h2>
+          <form action="" class="grid" id="new-book-form">
+            <label for="book_title">Title</label>
+            <div class="flex relative">
+              <input
+                type="text"
+                name="title"
+                id="book_title"
+                placeholder="Enter the title of your book"
+              />
+              <div class="validate"></div>
+            </div>
+
+            <label for="book_author">Author</label>
+            <div class="flex relative">
+              <input
+                type="text"
+                name="author"
+                id="book_author"
+                placeholder="Enter the name of the author"
+              />
+              <div class="validate"></div>
+            </div>
+
+            <label for="book_pages">Number of pages</label>
+            <div class="flex relative">
+              <input type="tel" name="pages" id="book_pages" />
+              <div class="validate"></div>
+            </div>
+
+            <label for="book_genre">Genre</label>
+            <select name="genre" id="book_genre"></select>
+
+            <label for="book_description">Description</label>
+            <textarea
+              name="description"
+              id="book_description"
+              cols="30"
+              rows="10"
+            ></textarea>
+
+            <label for="book_cover">Upload book cover</label>
+            <input type="file" name="cover" id="book_cover" accept="image/*" />
+
+            <div></div>
+            <div class="buttons">
+              <button
+                class="btn btn-primary btn-regular"
+                id="btn-add-to-library"
+              >
+                Add to library
+              </button>
+              <button class="btn btn-secondary btn-regular">Close</button>
+            </div>
+          </form>
+        </dialog>
+      </div>
+
+      <div class="content-wrapper grid"></div>
     </main>
-</body>
-
+  </body>
 </html>
