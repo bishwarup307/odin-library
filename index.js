@@ -338,16 +338,23 @@ displayGrid.addEventListener("click", (event) => {
       (book) => book.hash === Number(bookId)
     );
 
-    switch (actionType) {
-      case "read":
-        bookList[bookIndex].isRead = !bookList[bookIndex].isRead;
-        console.log("I finished this book");
-        break;
+    if (bookIndex !== -1) {
+      switch (actionType) {
+        case "read":
+          bookList[bookIndex].isRead = !bookList[bookIndex].isRead;
+          break;
 
-      case "favorite":
-        bookList[bookIndex].favorite = !bookList[bookIndex].favorite;
-        console.log("I like this book");
-        break;
+        case "favorite":
+          bookList[bookIndex].favorite = !bookList[bookIndex].favorite;
+          break;
+
+        case "remove":
+          const confirmation = confirm(
+            `Are you sure you want to delete ${bookList[bookIndex].title} from your library?`
+          );
+          if (confirmation) bookList.splice(bookIndex, 1);
+          break;
+      }
     }
 
     setLibrary(bookList);
