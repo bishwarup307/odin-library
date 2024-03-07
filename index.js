@@ -239,8 +239,9 @@ const displayBook = function (book) {
     title.textContent = book.title;
     bookInfo.appendChild(title);
 
-    const author = document.createElement("div");
+    const author = document.createElement("a");
     author.classList.add("book-author");
+    author.classList.add("relative");
     author.textContent = book.author;
     bookInfo.appendChild(author);
 
