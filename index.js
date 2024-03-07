@@ -1,6 +1,6 @@
 const addBookBtn = document.querySelector("#add-new-book");
 const modal = document.querySelector("#modal");
-const bookGenre = document.querySelector("#book_genre");
+const ribbonSvg = document.querySelector("#book_genre");
 const addToLibraryBtn = document.querySelector("#btn-add-to-library");
 
 const newBookForm = document.querySelector("#new-book-form");
@@ -51,6 +51,10 @@ const getRandomRating = function (min) {
   let rating = Math.min(Math.random() * (5 - min + 1) + min, 5);
   rating = Math.round(rating * 10) / 10;
   return rating;
+};
+
+const capitalize = function (str) {
+  return str.at(0).toUpperCase() + str.substring(1).toLowerCase();
 };
 
 const GENRES = [
@@ -104,6 +108,9 @@ const BOOK_READING =
 
 const BOOK_FINISHED =
   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 103.19 122.88" class="icon icon-read"><path d="M17.16 0h82.72a3.32 3.32 0 013.31 3.31v92.32c-.15 2.58-3.48 2.64-7.08 2.48H15.94c-4.98 0-9.05 4.07-9.05 9.05s4.07 9.05 9.05 9.05h80.17v-9.63h7.08v12.24c0 2.23-1.82 4.05-4.05 4.05H16.29C7.33 122.88 0 115.55 0 106.59V17.16C0 7.72 7.72 0 17.16 0zm3.19 13.4h2.86c1.46 0 2.66.97 2.66 2.15v67.47c0 1.18-1.2 2.15-2.66 2.15h-2.86c-1.46 0-2.66-.97-2.66-2.15V15.55c.01-1.19 1.2-2.15 2.66-2.15z" fill-rule="evenodd" clip-rule="evenodd"/></svg>';
+
+const RIBBON =
+  '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 847 1058.75" class="ribbon"><path d="M62 318c0,0 -41,6 -41,34 0,29 0,177 0,177 0,0 5,-36 41,-36l763 0 -77 -91 77 -84 -763 0z"/></svg>';
 
 // borrowed from https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
 String.prototype.hashCode = function () {
@@ -177,6 +184,7 @@ const displayBook = function (book) {
   bookContainer.classList.add("box");
   bookContainer.classList.add("flex-col");
   bookContainer.classList.add("gap1");
+  bookContainer.classList.add("relative");
 
   const imageDiv = document.createElement("div");
   imageDiv.classList.add("book-cover");
@@ -231,7 +239,7 @@ const displayBook = function (book) {
 
   const ratingDiv = document.createElement("div");
   ratingDiv.classList.add("rating-star");
-  const rating = book.rating || getRandomRating(3);
+  const rating = book.rating || 0;
   ratingDiv.style.setProperty("--rating", rating);
   ratingDiv.textContent = `(${rating})`;
   bookInfo.appendChild(ratingDiv);
@@ -251,6 +259,20 @@ const displayBook = function (book) {
   bookInfo.appendChild(otherInfo);
 
   bookContainer.appendChild(bookInfo);
+
+  const bookGenre = document.createElement("div");
+  bookGenre.classList.add("book-genre");
+  bookGenre.classList.add("absolute");
+
+  const ribbonSvg = document.createElement("div");
+  ribbonSvg.innerHTML = RIBBON;
+  bookGenre.appendChild(ribbonSvg);
+  const genreName = document.createElement("p");
+  genreName.classList.add("absolute");
+  genreName.textContent = book.genre.toUpperCase();
+  bookGenre.appendChild(genreName);
+  bookContainer.appendChild(bookGenre);
+
   displayGrid.appendChild(bookContainer);
 };
 
@@ -273,7 +295,7 @@ addBookBtn.addEventListener("click", () => {
     option.textContent = genre;
     options.appendChild(option);
   });
-  bookGenre.appendChild(options);
+  ribbonSvg.appendChild(options);
 
   modal.showModal();
 });
@@ -321,8 +343,9 @@ addToLibraryBtn.addEventListener("click", (event) => {
         bookAuthor.value,
         bookDescription.value,
         bookNumPages.value,
-        bookGenre.value,
-        imageUrl
+        ribbonSvg.value,
+        imageUrl,
+        getRandomRating(3)
       );
 
       console.log(imageUrl);

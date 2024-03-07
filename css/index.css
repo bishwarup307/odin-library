@@ -2,6 +2,7 @@
   /* --clr-primary: hsl(0, 89%, 51%); */
   /* --clr-primary: hsl(200, 67%, 36%); */
   --clr-primary: hsl(13, 25%, 60%);
+  --clr-primary-200: hsl(13, 25%, 80%);
   --clr-primary-600: hsl(13, 25%, 40%);
   --clr-secondary: hsl(204, 72%, 28%);
   --clr-background: hsl(0, 5%, 96%);
@@ -145,6 +146,7 @@ h3,
     left: -30px;
     transform: rotate(-45deg);
     overflow: hidden;
+    /* z-index: 100; */
   }
 
   & .action-icons {
@@ -193,6 +195,36 @@ h3,
     & .page-info::after {
       content: "\2022";
       padding-inline: 2px;
+    }
+  }
+
+  & .book-genre {
+    font-family: "Platipy";
+    font-size: 0.9rem;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    top: -5.5rem;
+    right: 0.4rem;
+    /* right: 0.1rem; */
+
+    & .ribbon {
+      width: 11rem;
+      /* height: 3rem; */
+      fill: #076b41;
+
+      /* height: 5rem; */
+    }
+
+    p {
+      font-size: 0.8rem;
+      font-weight: 700;
+      font-family: "Platipy";
+      color: #fff;
+      letter-spacing: 2px;
+      top: 4.6rem;
+      left: 20px;
+      white-space: nowrap;
     }
   }
 
