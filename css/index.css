@@ -213,6 +213,7 @@ h3,
 
         & .other-info {
             font-size: 0.8rem;
+            color: var(--clr-gray-600);
         }
 
         & .page-info::after {
@@ -352,6 +353,7 @@ dialog {
 
 .rating-star {
     font-size: 0.9rem;
+    font-weight: 300;
 
     &::before {
         --percent: calc(var(--rating) / 5 * 100%);
