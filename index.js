@@ -46,6 +46,13 @@ const setLibrary = function (bookList, updateDisplay = true) {
   if (updateDisplay) displayBooks();
 };
 
+const getRandomRating = function (min) {
+  min = Math.ceil(min);
+  let rating = Math.min(Math.random() * (5 - min + 1) + min, 5);
+  rating = Math.round(rating * 10) / 10;
+  return rating;
+};
+
 const GENRES = [
   "Fantasy",
   "Fiction",
@@ -53,6 +60,7 @@ const GENRES = [
   "Dystopian",
   "Action & Adventure",
   "Mystery",
+
   "Horror",
   "Thriller & Suspense",
   "Historical Fiction",
@@ -220,6 +228,13 @@ const displayBook = function (book) {
   author.classList.add("book-author");
   author.textContent = book.author;
   bookInfo.appendChild(author);
+
+  const ratingDiv = document.createElement("div");
+  ratingDiv.classList.add("rating-star");
+  const rating = book.rating || getRandomRating(3);
+  ratingDiv.style.setProperty("--rating", rating);
+  ratingDiv.textContent = `(${rating})`;
+  bookInfo.appendChild(ratingDiv);
 
   const otherInfo = document.createElement("div");
   otherInfo.classList.add("flex");

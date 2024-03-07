@@ -12,6 +12,7 @@
   --clr-gray-900: hsl(0, 0%, 25%);
   --clr-error: hsl(350, 66%, 53%);
   --clr-error-300: hsl(350, 66%, 63%);
+  --clr-star: hsl(48, 100%, 50%);
   /* --clr-error: rgb(214, 56, 82); */
 }
 
@@ -92,11 +93,11 @@ h3,
 }
 
 .content-wrapper {
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   column-gap: 1rem;
   row-gap: 4rem;
   /* padding-inline: clamp(1rem, 1rem + 15vw, 16rem); */
-  max-width: 60rem;
+  max-width: 80rem;
   margin: 0 auto;
   padding-block: 4rem;
   /* place-items: center; */
@@ -183,10 +184,6 @@ h3,
       text-align: center;
       font-size: 1.1rem;
       font-weight: 500;
-    }
-
-    & .book-author {
-      /* font-weight: 500; */
     }
 
     & .other-info {
@@ -295,6 +292,28 @@ dialog {
       color: var(--clr-error);
       bottom: -1rem;
     }
+  }
+}
+
+.rating-star {
+  font-size: 0.9rem;
+
+  &::before {
+    --percent: calc(var(--rating) / 5 * 100%);
+    content: "\f005 \f005 \f005 \f005 \f005";
+    letter-spacing: 3px;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 1rem;
+    background: linear-gradient(
+      90deg,
+      var(--clr-star) var(--percent),
+      var(--clr-gray-300) var(--percent)
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
 
