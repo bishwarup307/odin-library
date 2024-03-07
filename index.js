@@ -16,6 +16,9 @@ const bookNumPagesValidation = document.querySelector("#book_pages+.validate");
 
 const displayGrid = document.querySelector(".content-wrapper");
 
+const searchInput = document.querySelector("#search-input");
+const performSearch = document.querySelector("#search-submit");
+
 // let bookList;
 
 const getLibrary = function () {
@@ -64,7 +67,6 @@ const GENRES = [
   "Dystopian",
   "Action & Adventure",
   "Mystery",
-
   "Horror",
   "Thriller & Suspense",
   "Historical Fiction",
@@ -177,6 +179,10 @@ class Book {
   get hash() {
     return this.title.toLowerCase().hashCode();
   }
+
+  get searchDescription() {
+    return this.title.toLowerCase() + " " + this.author.toLowerCase();
+  }
 }
 
 const displayBook = function (book) {
@@ -276,10 +282,15 @@ const displayBook = function (book) {
   displayGrid.appendChild(bookContainer);
 };
 
-const displayBooks = function () {
+const displayBooks = function (searchText) {
   removeChildren(displayGrid);
 
   let bookList = getLibrary();
+
+  if (searchText) {
+    let regexp = new RegExp(searchText.toLowerCase(), "g");
+    bookList = bookList.filter((book) => book.searchDescription.match(regexp));
+  }
 
   bookList.forEach((book) => {
     displayBook(book);
@@ -397,4 +408,14 @@ displayGrid.addEventListener("click", (event) => {
 
     setLibrary(bookList);
   }
+});
+
+performSearch.addEventListener("click", () => {
+  const searchText = searchInput.value;
+  displayBooks(searchText);
+  // console.log(searchText);
+});
+
+searchInput.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") performSearch.click();
 });
