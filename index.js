@@ -181,7 +181,13 @@ class Book {
     }
 
     get searchDescription() {
-        return this.title.toLowerCase() + " " + this.author.toLowerCase();
+        return (
+            this.title.toLowerCase() +
+            " " +
+            this.author.toLowerCase() +
+            " " +
+            this.genre.toLowerCase()
+        );
     }
 }
 
