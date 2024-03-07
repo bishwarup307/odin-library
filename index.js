@@ -374,8 +374,6 @@ addToLibraryBtn.addEventListener("click", (event) => {
     }
 });
 
-displayBooks();
-
 const actionIcons = document.querySelectorAll(".icon");
 
 displayGrid.addEventListener("click", (event) => {
@@ -423,3 +421,113 @@ performSearch.addEventListener("click", () => {
 searchInput.addEventListener("keyup", (event) => {
     if (event.key === "Enter") performSearch.click();
 });
+
+const listedBooks = [
+    {
+        title: "Bad Blood",
+        author: "John Carreyrou",
+        description: "",
+        pages: 290,
+        genre: "Science & Technology",
+        cover: "./assets/images/bad blood.webp",
+        rating: 4.1,
+    },
+    {
+        title: "Pride and Prejudice",
+        author: "Jane Austen, Anna Quindlen",
+        description: "",
+        pages: 187,
+        genre: "Novel",
+        cover: "./assets/images/pride-and-prejudice.jpeg",
+        rating: 4.3,
+    },
+    {
+        title: "Gone Girl",
+        author: "Gillian Flynn",
+        description: "",
+        pages: 220,
+        genre: "Thriller",
+        cover: "./assets/images/Gone Girl book cover.webp",
+        rating: 4.5,
+    },
+    {
+        title: "A Brief History Of Time",
+        author: "Stephen Hawking",
+        description: "",
+        pages: 310,
+        genre: "Science Fiction",
+        cover: "./assets/images/A Brief History of Time.webp",
+        rating: 4.8,
+    },
+    {
+        title: "White Noise",
+        author: "Don DeLillo",
+        description: "",
+        pages: 267,
+        genre: "Fiction",
+        cover: "./assets/images/White Noise.webp",
+        rating: 3.7,
+    },
+    {
+        title: "The 5AM Club",
+        author: "Robin Sharma",
+        description: "",
+        pages: 244,
+        genre: "Self-help",
+        cover: "./assets/images/5AM club.avif",
+        rating: 4.2,
+    },
+    {
+        title: "Can't Hurt Me",
+        author: "David Goggins",
+        description: "",
+        pages: 287,
+        genre: "Self-help",
+        cover: "./assets/images/cant hurt me.avif",
+        rating: 4.7,
+    },
+    {
+        title: "Nineteen Eighty Four",
+        author: "George Orwell",
+        description: "",
+        pages: 230,
+        genre: "Science Fiction",
+        cover: "./assets/images/1984.jpeg",
+        rating: 4.3,
+    },
+    {
+        title: "To Kill a Mockingbird",
+        author: "Harper Lee",
+        description: "",
+        pages: 198,
+        genre: "Novel",
+        cover: "./assets/images/To kill a mockingbird.jpeg",
+        rating: 4.3,
+    },
+    {
+        title: "The Fault in Our Stars",
+        author: "John Green",
+        description: "",
+        pages: 313,
+        genre: "Young Adult",
+        cover: "./assets/images/The fault in our stars.jpeg",
+        rating: 4.1,
+    },
+];
+
+const myBooks = listedBooks.map(
+    (book) =>
+        new Book(
+            book.title,
+            book.author,
+            book.description,
+            book.pages,
+            book.genre,
+            book.cover,
+            book.rating
+        )
+);
+console.log(myBooks);
+if (getLibrary().length === 0) setLibrary(myBooks);
+
+displayBooks();
