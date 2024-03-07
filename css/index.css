@@ -4,7 +4,7 @@
   --clr-primary: hsl(13, 25%, 60%);
   --clr-primary-200: hsl(13, 25%, 80%);
   --clr-primary-600: hsl(13, 25%, 40%);
-  --clr-secondary: hsl(204, 72%, 28%);
+  --clr-secondary: hsl(358, 65%, 49%);
   --clr-background: hsl(0, 5%, 96%);
   --clr-gray-200: hsl(0, 0%, 80%);
   --clr-gray-300: hsl(0, 0%, 70%);
@@ -211,7 +211,7 @@ h3,
     & .ribbon {
       width: 11rem;
       /* height: 3rem; */
-      fill: #076b41;
+      fill: var(--clr-secondary);
 
       /* height: 5rem; */
     }
